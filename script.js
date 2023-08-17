@@ -1,125 +1,135 @@
 //  Sarcina 1
-function valoareaMinima(Ion, Alina, Ana) {
-    let minValue = Ion;
+function getValueMinimum(number1, number2, number3) {
+    let minValue = number1;
 
-    if (Alina < minValue) {
-        minValue = Alina;
+    if (number2 < minValue) {
+        minValue = number2;
     }
 
-    if (Ana < minValue) {
-        minValue = Ana;
+    if (number3 < minValue) {
+        minValue = number3;
     }
 
     return minValue;
 }
-console.log(valoareaMinima(23, 13, 34))
+console.log(getValueMinimum(23, 13, 34))
 
 // Sarcina 2
-function valoareaMaxima(Ion, Alina, Ana) {
-    let maxValue = Ion;
+function getMaximumValue(number1, number2, number3) {
+    let maxValue = number1;
 
-    if (Alina > maxValue) {
-        maxValue = Alina;
+    if (number2 > maxValue) {
+        maxValue = number2;
     }
 
-    if (Ana > maxValue) {
-        maxValue = Ana;
+    if (number3 > maxValue) {
+        maxValue = number3;
     }
 
     return maxValue;
 }
-console.log(valoareaMaxima(23, 13, 34))
+console.log(getMaximumValue(23, 13, 34))
 
 //Sarcina 3
-function varstaUnuiUtilizator(varsta) {
-    if (varsta >= 18) {
+function checkUserAge(age) {
+    if (age >= 18) {
         return "Esti potrivit pentru a juca acest joc";
     }
     else {
         return "Esti prea tanar pentru a juca acest joc";
     }
 }
-console.log(varstaUnuiUtilizator(18))
+console.log(checkUserAge(18))
 
 //Sarcina 4
-function verificaLimita(numar, limitaInferioara, limitaSuperioara) {
-    if (limitaInferioara <= numar && numar <= limitaSuperioara) {
+function checkLimit(number, inferiorLimit, upperLimit) {
+    if (inferiorLimit <= number && number <= upperLimit) {
         return "Numarul 23 se afla intre limita superioara si limita inferioara.";
     }
     else {
         return "Numarul 23 nu se afla intre limita superioara si limita inferioara.";
     }
 }
-const numar = 23;
-const limitaInferioara = 22;
-const limitaSuperioara = 32;
+const number = 23;
+const inferiorLimit = 22;
+const upperLimit = 32;
 
-const rezultat = verificaLimita(numar, limitaInferioara, limitaSuperioara);
+const rezultat = checkLimit(number, inferiorLimit, upperLimit);
 console.log(rezultat);
 
 //Sarcina 5
 function convertCurrency(value, fromCurrency, toCurrency) {
     const exchangeRates = {
-        "USD": 18.02,  
-        "MDL": 21.12,  
-        "RON": 4.01    
+        "USD": 0.92,
+        "MDL": 0.05,
+        "RON": 0.2
     };
 
     let baseAmount;
     if (fromCurrency === "EUR") {
         baseAmount = value;
     } else {
-        baseAmount = value / exchangeRates[fromCurrency];
+        baseAmount = value * exchangeRates[fromCurrency];
     }
 
-    let results;
+    let result;
     if (toCurrency === "EUR") {
-        results = baseAmount;
+        result = baseAmount;
     } else {
-        results = baseAmount * exchangeRates[toCurrency];
+        result = baseAmount / exchangeRates[toCurrency];
     }
 
-    return results.toFixed(2);
+    return result.toFixed(2);
 }
 
-const inputValue = 10; 
-const fromCurrency = "USD"; 
-const toCurrency = "MDL";   
+const inputValue = 1;
+const fromCurrency = "EUR";
+const toCurrency = "USD";
 
-const results = convertCurrency(inputValue, fromCurrency, toCurrency);
-console.log(`${inputValue} ${fromCurrency} sunt echivalentul a ${results} ${toCurrency}`);
-
-
+const result = convertCurrency(inputValue, fromCurrency, toCurrency);
+console.log(`${inputValue} ${fromCurrency} sunt echivalentul a ${result} ${toCurrency}`);
 
 //Sarcina 6
-function checkRectangleType(length, width) {
-    if (length === width) {
-        return "Dreptunghiul este un pătrat.";
+function checkSquare(side1, side2, side3, side4) {
+    if (side1 === side2 && side2 === side3 && side3 === side4) {
+        return "Dreptunghiul este un patrat.";
     } else {
-        return "Dreptunghiul nu este un pătrat.";
+        return "Dreptunghiul nu este un patrat.";
     }
 }
 
-let length = 5;
-let width = 5;
+let side1 = 3
+let side2 = 3
+let side3 = 6
+let side4 = 3
 
-let result = checkRectangleType(length, width);
-console.log(result);
+let rezultatt = checkSquare(side1, side2, side3, side4);
+console.log(rezultatt);
 
 //Sarcina 7
 function getDayName(dayNumber) {
-    let daysOfWeek = [
-        "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă", "Duminică"
-    ];
+    switch (dayNumber) {
+        case 1:
+            return "Luni";
+        case 2:
+            return "Marti";
+        case 3:
+            return "Miercuri";
+        case 4:
+            return "Joi";
+        case 5:
+            return "Vineri";
+        case 6:
+            return "Sambata";
+        case 7:
+            return "Duminica";
 
-    if (dayNumber >= 1 && dayNumber <= 7) {
-        return daysOfWeek[dayNumber - 1];
-    } else {
-        return "Numărul introdus nu corespunde unei zile de săptămână.";
+        default:
+
+            return "Numar invalid pentru ziua saptamanii.";
     }
 }
-
-let dayNumber = 3;
-
+let dayNumber = 6;
 let dayName = getDayName(dayNumber);
+
 console.log(dayName);
